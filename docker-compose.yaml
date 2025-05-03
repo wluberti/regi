@@ -1,0 +1,28 @@
+services:
+  php:
+    image: zenith/php8composer
+    container_name: regi-php
+    volumes:
+      - ./code:/code
+    environment:
+      TZ: Europe/Amsterdam
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:latest
+    container_name: regi-nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./site.conf:/etc/nginx/conf.d/default.conf
+      - ./code:/code
+      - ./logs:/var/log/nginx
+    environment:
+      TZ: Europe/Amsterdam
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

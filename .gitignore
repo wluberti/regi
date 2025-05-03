@@ -1,0 +1,11 @@
+# Ignore everything in /logs except .gitkeep
+/logs/*
+!/logs/.gitkeep
+
+# Ignore any IDE/editor config
+.idea/
+.vscode/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
